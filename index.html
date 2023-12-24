@@ -56,43 +56,26 @@
   <div id="countdown"></div>
   <script>
     function updateCountdown() {
-      // Set the date for December 25, 2023
       var countDownDate = new Date("Dec 25, 2023 00:00:00").getTime();
-
-      // Check if the current date has passed December 25, 2023
       if (new Date().getTime() > countDownDate) {
         // If it has, set a new countdown for January 1, 2024
         countDownDate = new Date("Jan 1, 2024 00:00:00").getTime();
       }
-
-      // Update the countdown every 1 second
       var x = setInterval(function() {
-        // Get the current date and time
         var now = new Date().getTime();
-
-        // Calculate the time remaining
         var distance = countDownDate - now;
-
-        // Calculate days, hours, minutes, and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Display the countdown
         document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
         + minutes + "m " + seconds + "s ";
-
-        // If the countdown is over, display a message
         if (distance < 0) {
           clearInterval(x);
-          // Recursively call the function to update the countdown
           updateCountdown();
         }
       }, 1000);
     }
-
-    // Initial call to start the countdown
     updateCountdown();
   </script>
 </body>
